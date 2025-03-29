@@ -1,4 +1,8 @@
 const grid = document.querySelector("#grid");
+grid.addEventListener("mouseover", (event) => {
+    event.target.style.cssText = "background-color: black; border-color: white;";
+});
+
 const newGridButton = document.querySelector("#new-grid");
 newGridButton.addEventListener("click", () => {
     const gridSize = parseInt(prompt("Enter a number of cells per side (1-100):"));
@@ -13,10 +17,6 @@ newGridButton.addEventListener("click", () => {
 createGrid(16);
 
 function createGrid(cellNumberPerSide) {
-    grid.addEventListener("mouseover", (event) => {
-        event.target.style.cssText = "background-color: black; border-color: white;";
-    });
-
     for (let i = 0; i < cellNumberPerSide; i++) {
         const column = document.createElement("div");
         column.classList.add("column");
