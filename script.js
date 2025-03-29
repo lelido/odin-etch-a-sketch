@@ -1,6 +1,15 @@
 const grid = document.querySelector("#grid");
 grid.addEventListener("mouseover", (event) => {
-    event.target.style.cssText = "background-color: black; border-color: white;";
+    switch (activeMode) {
+        case "Black":
+            event.target.style.backgroundColor = "black";
+            break;
+        case "Random":
+            event.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+            break;
+    }
+
+    event.target.style.borderColor = "white";
 });
 
 const newGridButton = document.querySelector("#new-grid");
@@ -13,6 +22,18 @@ newGridButton.addEventListener("click", () => {
         alert("Wrong cell number: Should be 1-100. Try again.");
     }
 });
+
+const modes = document.querySelector(".modes");
+modes.addEventListener("click", (event) => {
+    for (let mode of event.currentTarget.children) {
+        mode.classList.remove("active");
+    }
+
+    event.target.classList.add("active");
+    activeMode = event.target.textContent;
+});
+
+let activeMode = "Black";
 
 createGrid(16);
 

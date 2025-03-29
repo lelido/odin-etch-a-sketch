@@ -7,11 +7,25 @@ body {
     background-color: rgb(204, 219, 198);
 }
 
+.buttons {
+    display: flex;
+    gap: 32px;
+}
+
 button {
     width: 96px;
     height: 32px;
     font-family: Verdana, sans-serif;
     font-size: 16px;
+}
+
+.modes button {
+    background-color: rgb(235, 253, 228);
+}
+
+.modes button.active {
+    background-color: rgb(100, 107, 97);
+    color: white;
 }
 
 #grid {
