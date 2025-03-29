@@ -1,14 +1,38 @@
-createGrid();
+const grid = document.querySelector("#grid");
+const newGridButton = document.querySelector("#new-grid");
+newGridButton.addEventListener("click", () => {
+    const gridSize = parseInt(prompt("Enter a number of cells per side (1-100):"));
+    if (gridSize >= 1 && gridSize <= 100) {
+        removeGrid();
+        createGrid(gridSize);
+    } else {
+        alert("Wrong cell number: Should be 1-100. Try again.");
+    }
+});
 
-function createGrid() {
-    const grid = document.querySelector("#grid");
+createGrid(16);
+
+function createGrid(cellNumberPerSide) {
     grid.addEventListener("mouseover", (event) => {
         event.target.style.cssText = "background-color: black; border-color: white;";
     });
 
-    for (let i = 0; i < 16 * 16; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add("cell");
-        grid.appendChild(cell);
+    for (let i = 0; i < cellNumberPerSide; i++) {
+        const column = document.createElement("div");
+        column.classList.add("column");
+
+        for (let j = 0; j < cellNumberPerSide; j++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            column.appendChild(cell);
+        }
+
+        grid.appendChild(column);
+    }
+}
+
+function removeGrid() {
+    while (grid.hasChildNodes()) {
+        grid.removeChild(grid.lastElementChild);
     }
 }
