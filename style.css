@@ -1,0 +1,14 @@
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cell-amount-in-a-row * cell-width */
+    width: 512px;
+}
+
+.cell {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 1px solid black;
+    flex-shrink: 0;
+}
